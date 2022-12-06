@@ -1,10 +1,11 @@
 const key = 'api_key=5ec5e2a1c7e8d83302a468d15e1ed7c2';
 
 const baseURL = `https://api.themoviedb.org/3`
+let pageNumber = 1;
 
-const url = baseURL + `/discover/movie?sort_by=popularity.desc&` + key
+let url = `${baseURL}/discover/movie?sort_by=popularity.desc&${key}&page=${pageNumber}`;
 
-const img = `https://image.tmdb.org/t/p/w500`
+const img = `https://image.tmdb.org/t/p/w500`;
 
 
 
@@ -12,7 +13,9 @@ const data = fetch(url).then(response => {
     return response.json()
 }).then(data =>{
     showMovies(data.results)
-    console.log(data.results.length)
+    console.log(data.results[2])
+    console.log(data)
+    
 })
 
 
@@ -40,5 +43,5 @@ function showMovies (data){
 
 
 
-    console.log(img + data[2].poster_path)
 }
+
